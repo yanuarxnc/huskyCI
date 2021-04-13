@@ -79,7 +79,8 @@ gosec:
     if [ $? -eq 0 ]; then
       cd code
       touch results.json
-      $(which gosec) -quiet -fmt=json -nosec-tag nohusky -log=log.txt -out=results.json ./... 2> /dev/null
+      rm -f go.mod
+      $(which gosec) -include=G101,G201,G202,G501,G505,G107,G203,G304 -quiet -fmt=json -nosec-tag nohusky -log=log.txt -out=results.json ./... 2> /dev/null
       jq -j -M -c . results.json
     else
       echo "ERROR_CLONING"

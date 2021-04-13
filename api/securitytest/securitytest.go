@@ -103,7 +103,7 @@ func (scanInfo *SecTestScanInfo) dockerRun(timeOutInSeconds int) error {
 func (scanInfo *SecTestScanInfo) analyze() error {
 	errorCloning := strings.Contains(scanInfo.Container.COutput, "ERROR_CLONING")
 	if errorCloning {
-		errorMsg := errors.New("error cloning")
+		errorMsg := errors.New(scanInfo.Container.COutput)
 		log.Error("analyze", "SECURITYTEST", 1031, scanInfo.URL, scanInfo.Branch, errorMsg)
 		scanInfo.ErrorFound = errorMsg
 		return errorMsg

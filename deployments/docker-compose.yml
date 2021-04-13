@@ -58,8 +58,8 @@ services:
             context: ../
             dockerfile: deployments/dockerfiles/db.Dockerfile
         ports:
-          - "27017:27017"
-          - "27018:27018"
+          - "27027:27027"
+          - "27028:27028"
         volumes:
             - mongo_vol:/data/db
         networks:
@@ -85,7 +85,7 @@ services:
             context: ../
             dockerfile: deployments/dockerfiles/postgres.Dockerfile
         ports:
-            - "5432:5432"
+            - "5433:5433"
         networks:
             - huskyCI_net
     
